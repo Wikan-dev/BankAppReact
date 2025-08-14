@@ -8,10 +8,14 @@ import icon6 from './assets/Group.svg';
 import icon7 from './assets/Group5.svg';
 
 import Menu from './Menu.jsx';
+import { UserData } from './assets/data/data.js';
+const Data = Object.values(UserData);
+const currentUser = Data.find(user => user.id === 1);
 
 import { BrowserRouter, Link, Route, Routes } from 'react-router';
 import Transfer from './Transfer.jsx';
 import TransferReport from './TransferReport';
+import TransferProces from './tfProces.jsx';
 
 const MiniCard = ({image, title}) => {
   return (
@@ -27,16 +31,14 @@ const Home = () => {
 
   return (
     <div className='px-2 pt-10 bg-[#FFFDFF]'>
-
-      <h1 className='font-bold text-[35px] ml-2'>GOOD MORNING, name</h1>
-
+        <h1 key={currentUser.id} className='font-bold text-[35px] ml-2'>GOOD MORNING, {currentUser.nama}</h1>
       <div className='flex justify-center relative'>
-        <div className='text-white'>
-          <h1 className='absolute top-12 left-12 text-[30px]'>Name</h1>
-          <h1 className='absolute top-45 left-12 text-[20px] font-bold'>10.000.000</h1>
-          <h1 className='absolute top-38 left-12'>0293 1292 1230 1939</h1>
-          <h1 className='absolute top-30 left-12'>type</h1>
-        </div>
+          <div key={currentUser.uniqueKey} className='text-white'>
+            <h1 className='absolute top-12 left-12 text-[30px]'>{currentUser.nama}</h1>
+            <h1 className='absolute top-45 left-12 text-[20px] font-bold'>{currentUser.saldo}</h1>
+            <h1 className='absolute top-38 left-12'>{currentUser.nomer}</h1>
+            <h1 className='absolute top-30 left-12'>{currentUser.tipe}</h1>
+          </div>
         <img src={Multi} alt="card" />
       </div>
 
@@ -49,8 +51,11 @@ const Home = () => {
         <MiniCard image={icon6} title="Mobile Recharge" />
         <Link to={"/transferReport"}><MiniCard image={icon7} title="Transfer Report" /></Link>
       </div>
-      <Menu />
+      <div className='absolute -left-0 bottom-0'>
+        <Menu />
+      </div>
     </div>
+
   );
 }
 
@@ -61,6 +66,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/transferReport" element={<TransferReport />} />
         <Route path="/transfer" element={<Transfer />} />
+        <Route path='/tfProces' element={<TransferProces />} />
         {/* Add more routes as needed */}
       </Routes>
     </BrowserRouter>

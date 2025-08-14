@@ -1,9 +1,9 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import Menu from "./Menu";
 import Shape from "./assets/Shape.svg";
 import search from './assets/search.svg';
 
-const Profile = ({title, photo, dola}) => {
+const Profile = ({title}) => {
     return (
         <div className="h-15 flex w-[100%] relative">
             <div className='w-10 h-10 bg-blue-500 absolute mt-3 rounded-full '></div>
@@ -17,7 +17,7 @@ const Transfer = () => {
     return (
         <div className="mx-10 mt-10">
             <div className="flex justify-between">
-                <Link to="/"><img src={Shape} alt="panah" /></Link>
+                <Link to="/"><img className="w-3" src={Shape} alt="panah" /></Link>
                 <h1 className="font-bold text-[20px]">Transfer Money To</h1>
             </div> 
             <div>
@@ -26,16 +26,20 @@ const Transfer = () => {
             </div>
 
             <div className="mt-5 flex gap-5 flex-col"> 
-                <Profile title={"gred"}/>
-                <Profile title={"gred"}/>
-                <Profile title={"gred"}/>
-                <Profile title={"gred"}/>
-                <Profile title={"gred"}/>
+                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
+                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
+                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
+                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
+                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
+                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
+                
             </div>
 
             <div className="absolute -left-0">
                 <Menu />
             </div>
+
+            {/* <TransferReport title="gred" num="2929 **** 92292" amount="$200.00" /> */}
         </div>
     )
 }
