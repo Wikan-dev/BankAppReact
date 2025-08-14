@@ -5,5 +5,5 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: './BankApp', // Ensures that assets are correctly linked
+  base: './BankAppReact', // Ensures that assets are correctly linked
 })
