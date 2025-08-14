@@ -1,16 +1,23 @@
-{
-    "user-1" : {
-        "id" : 1,
-        "nama" : "wikan",
-        "saldo": 200000,
-        "nomer": 238742323,
-        "tipe": "expres"
-    },
-    "user-2" : {
-        "id" : 2,
-        "nama" : "lanang",
-        "saldo": 300000,
-        "nomer": 10234898,
-        "tipe": "expres"
+    {
+        "user-1" : {
+            "id" : 1,
+            "nama" : "wikan",
+            "saldo": 200000,
+            "nomer": 238742323,
+            "tipe": "expres"
+        },
+        "user-2" : {
+            "id" : 2,
+            "nama" : "lanang",
+            "saldo": 300000,
+            "nomer": 10234898,
+            "tipe": "expres"
+        },
+        "user-3" : {
+            "id" : 3,
+            "nama" : "agus",
+            "saldo": 300000,
+            "nomer": 10234898,
+            "tipe": "expres"
+        }
     }
-}

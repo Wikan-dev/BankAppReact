@@ -50,7 +50,7 @@ const TransferProces = ({ num }) => {
     const {title} = location.state || {};
 
    const handleSend = () => {
-        if (amount == null || amount == '')  { 
+        if (amount == null || amount < 1 || amount == '')  { 
             alert("Please enter an amount"); 
         } else if (amount <= 9999 ) {
             setProces(true);

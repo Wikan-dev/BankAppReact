@@ -8,9 +8,11 @@ import icon6 from './assets/Group.svg';
 import icon7 from './assets/Group5.svg';
 
 import Menu from './Menu.jsx';
-import { UserData } from './assets/data/data.js';
+
+// megimpor json sesuai id
+import { UserData } from './assets/data/data.js'
 const Data = Object.values(UserData);
-const currentUser = Data.find(user => user.id === 1);
+const currentUser = Data.find(user => user.id === 1); //mengambil data dari json sesuai id
 
 import { BrowserRouter, Link, Route, Routes } from 'react-router';
 import Transfer from './Transfer.jsx';
@@ -31,7 +33,7 @@ const Home = () => {
 
   return (
     <div className='px-2 pt-10 bg-[#FFFDFF]'>
-        <h1 key={currentUser.id} className='font-bold text-[35px] ml-2'>GOOD MORNING, {currentUser.nama}</h1>
+        <h1 className='font-bold text-[35px] ml-2'>GOOD MORNING, {currentUser.nama}</h1>
       <div className='flex justify-center relative'>
           <div key={currentUser.uniqueKey} className='text-white'>
             <h1 className='absolute top-12 left-12 text-[30px]'>{currentUser.nama}</h1>
@@ -61,7 +63,7 @@ const Home = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/BankAppReact'>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/transferReport" element={<TransferReport />} />

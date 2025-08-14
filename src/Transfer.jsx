@@ -3,6 +3,8 @@ import Menu from "./Menu";
 import Shape from "./assets/Shape.svg";
 import search from './assets/search.svg';
 
+import { UserData } from "./assets/data/data";
+
 const Profile = ({title}) => {
     return (
         <div className="h-15 flex w-[100%] relative">
@@ -26,13 +28,10 @@ const Transfer = () => {
             </div>
 
             <div className="mt-5 flex gap-5 flex-col"> 
-                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
-                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
-                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
-                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
-                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
-                <Link to="/tfProces" state={{ title: "gred" }}><Profile title={"gred"}/></Link>
-                
+                {Object.values(UserData).map((item) => (
+                    <Link key={item.id} to="/tfProces" state={{ title: item.nama }}><Profile title={item.nama}/></Link>
+                ))}
+
             </div>
 
             <div className="absolute -left-0">
