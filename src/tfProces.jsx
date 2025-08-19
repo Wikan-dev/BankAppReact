@@ -5,6 +5,10 @@ import Shape from './assets/Shape.svg';
 import succes from './assets/succes.svg';
 // import Profile from './Transfer.jsx';
 import Menu from './Menu';
+// import { UserHistory } from './assets/data/data';
+import { UserData } from './assets/data/data';
+const Data = Object.values(UserData);
+const currentUser = Data.find(user => user.id === 1);
 
 const TransferSucces = ({value, title}) => {
     const [show, setShow] = useState(false);
@@ -21,7 +25,7 @@ const TransferSucces = ({value, title}) => {
                 <h1 className='font-bold text-[30px] mx-auto text-center w-80'>$ {value} <span>has been sent to {title}</span></h1>
             </div>
             <Link to="/Transfer"><button  className="text-white font-medium bg-linear-to-t from-[#6C56F0] to-[#469FEF] w-[80%] left-10 h-15 absolute bottom-20 rounded-xl hover:scale-110 transition-all transition-1s">Close</button></Link>
-            <button className="text-blue-400 font-medium w-[80%] left-10 h-15 absolute bottom-40 rounded-xl hover:scale-110 transition-all transition-1s">View receipt</button>
+            <Link to="/TransferHistory"><button className="text-blue-400 font-medium w-[80%] left-10 h-15 absolute bottom-40 rounded-xl hover:scale-110 transition-all transition-1s">View receipt</button></Link>
             {/* <Profile title={name} /> */}
         </div>
     )
@@ -48,12 +52,48 @@ const TransferProces = ({ num }) => {
     const [amount, setAmount] = useState('');
     const location = useLocation();
     const {title} = location.state || {};
+    // const [nama, setNama] = useState("");
+    // const [nominal, setNominal] = useState("");
+    // const [tanggal, setTanggal] = useState("");
+    // const [state, setState] = useState("succes");
 
-   const handleSend = () => {
+    const date = new Date();
+    const today = date.getDate();
+    const [saldo, setSaldo] = useState(currentUser.ssaldo);
+
+   const handleSend = async () => {
         if (amount == null || amount < 1 || amount == '')  { 
             alert("Please enter an amount"); 
         } else if (amount <= 9999 ) {
             setProces(true);
+            const res = await fetch("http://localhost:3001/add-history", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    nama : title,
+                    nominal : amount,
+                    tanggal : today,
+                    state : "succes"
+                })
+            });
+
+
+            if (saldo > amount) {
+                 await fetch("http://localhost:3001/update-saldo", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        id: currentUser.id,         // id user yang dipilih
+                        newSaldo: saldo - amount    // saldo baru   
+                    })
+                });
+            } else if (saldo < amount) {
+                alert("saldo anda kurang");
+            }
+
+            const mainData = await res.json();
+            console.table("Data terbaru: ", mainData);
+
         } else {
             alert("Amount exceeds limit of 9999");
         }

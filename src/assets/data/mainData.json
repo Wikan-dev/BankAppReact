@@ -2,22 +2,28 @@
         "user-1" : {
             "id" : 1,
             "nama" : "wikan",
-            "saldo": 200000,
+            "saldo": 2000000,
             "nomer": 238742323,
-            "tipe": "expres"
+            "tipe": "expres",
+            "expire" : "02/30",
+            "email" : "blabla@gmail.com",
+            "phone" : "0485394",
+            "Home" : "jln. anjay, Bali"
         },
         "user-2" : {
             "id" : 2,
             "nama" : "lanang",
             "saldo": 300000,
             "nomer": 10234898,
-            "tipe": "expres"
+            "tipe": "expres",
+            "expire" : "02/30"
         },
         "user-3" : {
             "id" : 3,
             "nama" : "agus",
             "saldo": 300000,
             "nomer": 10234898,
-            "tipe": "expres"
+            "tipe": "expres",
+            "expire" : "02/30"
         }
     }
