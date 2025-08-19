@@ -86,7 +86,7 @@ const App = () => {
         <Route path='/account' element={<Account />} />
         <Route path='/TransferHistory' element={<MainHistory />} />
         <Route path='/Card' element={<Card />} />
-        <Route path='/Withdraw' element={<Withdraw />} />
+        <Route path='/withdraw' element={<Withdraw />} />
         <Route path='/sccWd' element={<SuccesWd />} />
         {/* Add more routes as needed */}
       </Routes>

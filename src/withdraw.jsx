@@ -3,7 +3,7 @@ import shpae from './assets/Shape.svg'
 import { useState, useRef, useEffect } from 'react'
 import Logo from './assets/Logo.png'
 
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { UserData } from './assets/data/data'
 const Data = Object.values(UserData);
@@ -52,6 +52,7 @@ const Withdraw = () => {
     const btn = useRef(null);
     const phone = useRef(null);
     const [active, setActive] = useState(null);
+    const navigate = useNavigate();
     
     useEffect(() => {
         if (!btn.current) return;
@@ -68,8 +69,8 @@ const Withdraw = () => {
         console.log("click");
     }
 
-    function anotherPage(url) {
-        window.location.href = url;
+    function anotherPage() {
+        navigate('/sccWd');
     }
 
     function handleVerify() {
@@ -82,7 +83,7 @@ const Withdraw = () => {
         } else {
             alert("verifying...");
 
-            setTimeout(anotherPage, 3000, "http://localhost:5173/BankAppReact/sccWd");
+            setTimeout(anotherPage, 3000);
             console.log("succes");
         }
     }
