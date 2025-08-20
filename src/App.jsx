@@ -23,6 +23,8 @@ import MainHistory from './TransferHistory.jsx'
 import Card from './Card.jsx';
 import Withdraw from './withdraw.jsx';
 import SuccesWd from './sccWd.jsx';
+import MobileRecharge from './mobileRecharge.jsx';
+import SuccesMr from './sccMr.jsx';
 
 const MiniCard = ({image, title}) => {
   return (
@@ -64,7 +66,7 @@ const Home = ({date}) => {
         <Link to="/Withdraw"><MiniCard image={icon3} title="Withdraw" /></Link>
         <MiniCard image={icon4} title="Credit Card" />
         <MiniCard image={icon5} title="Pay the bill" />
-        <MiniCard image={icon6} title="Mobile Recharge" />
+        <Link to='/mobileRecharge'><MiniCard image={icon6} title="Mobile Recharge" /></Link>
         <Link to={"/TransferHistory"}><MiniCard image={icon7} title="Transfer Report" /></Link>
       </div>
       <div className='absolute -left-0 bottom-0'>
@@ -88,6 +90,8 @@ const App = () => {
         <Route path='/Card' element={<Card />} />
         <Route path='/withdraw' element={<Withdraw />} />
         <Route path='/sccWd' element={<SuccesWd />} />
+        <Route path='/mobileRecharge' element={<MobileRecharge />} />
+        <Route path='/sccmr' element={<SuccesMr />} />
         {/* Add more routes as needed */}
       </Routes>
     </BrowserRouter>

@@ -9,6 +9,16 @@ app.use(express.json());
 // Path ke file JSON
 const FILE_PATH = "C:/Users/ASUS/Bank/src/assets/data/historyData.json";
 
+app.delete("/clear-history", (req, res) => {
+  try {
+    fs.writeFileSync(FILE_PATH, JSON.stringify({}, null, 2));
+    res.json({message: "history cleared"})
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "failed to delete history"});
+  }
+})
+
 // Endpoint untuk tambah data
 app.post("/add-history", (req, res) => {
   let data = {};
