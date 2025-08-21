@@ -1,5 +1,5 @@
 import shape from './assets/Shape.svg';
-import { UserData } from './assets/data/data';
+import { UserData } from '../backEnd/data/data.js'
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 

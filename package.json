@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "server": "node ./src/server/server.js"
+    "server": "node ./backend/server/server.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",

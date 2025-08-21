@@ -3,7 +3,7 @@ import Menu from "./Menu";
 import Shape from "./assets/Shape.svg";
 import search from './assets/search.svg';
 
-import { UserData } from "./assets/data/data";
+import { UserData } from '../backEnd/data/data.js'
 
 const Profile = ({title}) => {
     return (

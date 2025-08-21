@@ -1,6 +1,5 @@
-// src/UserData.js
 import Data from './mainData.json'; //mengimpor json
-import HistoryData from './historyData.json'; //mengimpor json
+import HistoryData from '../server/historyData.json'; //mengimpor json
 
 export const UserData = Object.entries(Data).map(([key, value]) => ({
   ...value,         // copy semua isi user (id, nama, saldo, dll)

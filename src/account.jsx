@@ -1,4 +1,4 @@
-import { UserData } from "./assets/data/data";
+import { UserData } from '../backEnd/data/data.js'
 import mata from './assets/mata.svg'
 import Menu from "./Menu";
 import { useRef, useState } from "react";
@@ -36,7 +36,7 @@ const Account = () => {
                 <div className="relative w-full h-50 bg-linear-to-t from-[#6C56F0] to-[#469FEF] mt-10 rounded-xl p-10">
                 <div className="flex gap-7">
                     {/* <h1 className="text-white font-bold text-[25px]">{currentUser.nomer}</h1> */}
-                    <input className="font-bold text-white text-[30px] w-40" type={hide ? "password" : "text"} defaultValue={currentUser.nomer} />
+                    <input readOnly className="focus:outline-none font-bold text-white text-[30px] w-40" type={hide ? "password" : "text"} defaultValue={currentUser.nomer} />
                     <button onClick={handleHide}><img className="w-7 mouse-pointer" src={mata} alt="mata" /></button>
                 </div>
 

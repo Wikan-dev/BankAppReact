@@ -10,7 +10,7 @@ import icon7 from './assets/Group5.svg';
 import Menu from './Menu.jsx';
 
 // megimpor json sesuai id
-import { UserData } from './assets/data/data.js'
+import { UserData } from '../backEnd/data/data.js'
 const Data = Object.values(UserData);
 const currentUser = Data.find(user => user.id === 1); //mengambil data dari json sesuai id
 
@@ -25,6 +25,8 @@ import Withdraw from './withdraw.jsx';
 import SuccesWd from './sccWd.jsx';
 import MobileRecharge from './mobileRecharge.jsx';
 import SuccesMr from './sccMr.jsx';
+import PayBill from './payBill.jsx';
+import Bill from './bill.jsx';
 
 const MiniCard = ({image, title}) => {
   return (
@@ -65,7 +67,7 @@ const Home = ({date}) => {
         <Link to='/Transfer'><MiniCard image={icon2} title="Transfer" /></Link>
         <Link to="/Withdraw"><MiniCard image={icon3} title="Withdraw" /></Link>
         <MiniCard image={icon4} title="Credit Card" />
-        <MiniCard image={icon5} title="Pay the bill" />
+        <Link to='/payBill'><MiniCard image={icon5} title="Pay the bill" /></Link>
         <Link to='/mobileRecharge'><MiniCard image={icon6} title="Mobile Recharge" /></Link>
         <Link to={"/TransferHistory"}><MiniCard image={icon7} title="Transfer Report" /></Link>
       </div>
@@ -92,6 +94,8 @@ const App = () => {
         <Route path='/sccWd' element={<SuccesWd />} />
         <Route path='/mobileRecharge' element={<MobileRecharge />} />
         <Route path='/sccmr' element={<SuccesMr />} />
+        <Route path='/payBill' element={<PayBill />} />
+        <Route path='/bill' element={<Bill />} />
         {/* Add more routes as needed */}
       </Routes>
     </BrowserRouter>

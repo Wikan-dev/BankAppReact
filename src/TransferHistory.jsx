@@ -1,4 +1,4 @@
-import { UserHistory } from "./assets/data/data";
+import { UserHistory } from "../backEnd/data/data";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import shape from './assets/Shape.svg'

@@ -1,4 +1,4 @@
-import { UserData } from "./assets/data/data";
+import { UserData } from '../backEnd/data/data.js'
 const Data = Object.values(UserData);
 const currentUser = Data.find(user => user.id === 1);
 

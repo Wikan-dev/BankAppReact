@@ -6,7 +6,7 @@ import succes from './assets/succes.svg';
 // import Profile from './Transfer.jsx';
 import Menu from './Menu';
 // import { UserHistory } from './assets/data/data';
-import { UserData } from './assets/data/data';
+import { UserData } from '../backEnd/data/data.js'
 const Data = Object.values(UserData);
 const currentUser = Data.find(user => user.id === 1);
 
