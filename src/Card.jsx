@@ -3,7 +3,7 @@ const Data = Object.values(UserData);
 const currentUser = Data.find(user => user.id === 1);
 
 import cardBg1 from './assets/1.svg';
-import cardBg2 from './assets/2.svg';
+// import cardBg2 from './assets/2.svg';
 import Shape from './assets/Shape.svg';
 import { Link } from "react-router-dom";
 

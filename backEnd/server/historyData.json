@@ -2,13 +2,25 @@
   "tf-1": {
     "nama": "withdraw",
     "nominal": "50",
-    "tanggal": 21,
+    "tanggal": 22,
     "state": "succes"
   },
   "tf-2": {
-    "nama": "mobile recharge",
-    "nominal": "30",
-    "tanggal": 21,
+    "nama": "wikan",
+    "nominal": "123",
+    "tanggal": 22,
+    "state": "succes"
+  },
+  "tf-3": {
+    "nama": "withdraw",
+    "nominal": "50",
+    "tanggal": 22,
+    "state": "succes"
+  },
+  "tf-4": {
+    "nama": "Electric bill",
+    "nominal": 50,
+    "tanggal": 22,
     "state": "succes"
   }
 }

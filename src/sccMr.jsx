@@ -1,5 +1,6 @@
 import mr from './assets/mr.svg';
 import { Link } from 'react-router-dom';
+import Menu from './Menu';
 
 const SuccesMr = () => {
     return (
@@ -15,6 +16,7 @@ const SuccesMr = () => {
             </div>
 
              <Link to="/"><button className='bg-linear-to-b from-[#469FEF] to-[#6C56F0] w-[80%] h-10 mx-auto flex justify-center pt-2 rounded-lg mt-10 text-white hover:scale-110 transition-all duration-100'>Continue</button></Link>
+            <Menu />
         </div>
     )
 }

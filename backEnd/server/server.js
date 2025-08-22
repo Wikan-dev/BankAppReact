@@ -52,10 +52,11 @@
 // app.listen(3001, () => console.log("✅ Server jalan di http://localhost:3001"));
 
 
-import express from "express";
+import express, { response } from "express";
 import fs from "fs";
 import cors from "cors";
 import path from "path";
+import request from "request";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -64,6 +65,27 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get("/stock", (req, res) => {
+  const url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=ZGA8KJ1YHL5JTBGX"
+
+  request.get(
+    {
+      url: url,
+      json: true,
+      headers: {  "User-Agent" : "request"}, 
+    },
+    (err, response, data) => {
+      if (err) {
+        return res.status(500).json({ error: err.message});
+      } else if (response.statusCode !== 200) {
+        return res.status(response.statusCode).json({ error: "APi eror"});
+      } else {
+        return res.json(data);
+      }
+    }
+  )
+})
 
 // Path JSON relatif ke server.js
 const FILE_PATH = path.join(__dirname, "historyData.json");

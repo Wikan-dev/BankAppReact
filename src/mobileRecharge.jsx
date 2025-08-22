@@ -2,6 +2,7 @@ import shape from './assets/Shape.svg';
 import { UserData } from '../backEnd/data/data.js'
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
+import Menu from './Menu.jsx';
 
 const Data = Object.values(UserData);
 const currentUser = Data.find(user => user.id === 1);
@@ -57,7 +58,7 @@ const Confirm = ({nama, nominal}) => {
                 </div>
             </div>
             <button onClick={handleConfirm} className='bg-linear-to-b from-[#469FEF] to-[#6C56F0] w-[80%] h-10 mx-auto flex justify-center pt-2 rounded-lg mt-10 text-white hover:scale-110 transition-all duration-100'>Verify</button>
-
+            <Menu />
         </div>
     )
 }
@@ -170,6 +171,7 @@ const MobileRecharge = () => {
                 </div>
 
                 <button onClick={handleConfirm} ref={btn} className='bg-linear-to-b from-[#469FEF] to-[#6C56F0] w-full h-10 rounded-lg  mt-10 text-white hover:scale-110 transition-all duration-100'>Verify</button>
+                <Menu />
         </div>
     )
 }

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { UserData } from "../backEnd/data/data";
 import shape from './assets/shape.svg';
 import { Link, useLocation } from "react-router-dom";
+import mr from './assets/mr.svg';
+import Menu from "./Menu";
 
 const Data = Object.values(UserData);
 const CurrentUser = Data.find(user => user.id === 1);
@@ -10,6 +12,33 @@ const date = new Date();
 const day = date.getDate();
 const month = date.getMonth();
 const year = date.getFullYear();
+
+const Succes = () => {
+    const location = useLocation();
+    const title = location.state?.title || "";
+
+    return (
+        <div className="w-full h-[100vh] bg-white absolute left-0 top-0 z-20 p-5">
+            <div>
+                <Link to='/payBill'><img className="w-3" src={shape} alt="" /></Link>
+                <h1 className="relative bottom-7 ml-10 font-bold text-[25px]">{title}</h1>
+            </div>
+
+            <img src={mr} alt="succes" className="w-70 mx-auto mt-10" />
+
+            <div className="text-center flex gap-5 flex-col mt-5">
+                <h1 className="text-[20px] font-bold text-blue-600">
+                    Transaction succesfully
+                </h1>
+                <h1>
+                    You 've pay your {title};
+                </h1>
+            </div>
+
+            <Link to='/'><button className="text-white left-10 font-medium bg-linear-to-t from-[#6C56F0] to-[#469FEF] w-[80%] h-15 absolute bottom-15 rounded-xl hover:scale-110 transition-all transition-1s">continue</button></Link>
+        </div>
+    )
+}
 
 const Tanggal = ({day, stringMonth, year}) => {
     return(
@@ -27,6 +56,7 @@ const Bill = () => {
     const title = location.state?.title || "";
     const billCode = location.state?.billCode || "";
     const [inputValue, setInputValue] = useState("");
+    const [scc, setScc] = useState(false);
 
     const [charge] = useState(() => Math.floor(Math.random() * 101))
 
@@ -39,8 +69,33 @@ const Bill = () => {
         setShow(prev => !prev);
     }
 
+    const date = new Date();
+    const today = date.getDate();
+
+    async function handlePayBill() {
+        setScc(true);
+
+        const res = await fetch("http://localhost:3001/add-history", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    nama : title,
+                    nominal : charge,
+                    tanggal : today,
+                    state : "succes"
+                })
+            });
+
+            const mainData = await res.json();
+            console.table("Data terbaru: ", mainData);
+    }
+
     return(
-        <div className="m-5">
+        <div className="m-5 mb-35">
+            {scc ? (
+                <Succes />
+            ) : (null)}
+
             <div>
                 <Link to='/payBill'><img className="w-3" src={shape} alt="" /></Link>
                 <h1 className="relative bottom-7 ml-10 font-bold text-[25px]">{title}</h1>
@@ -83,7 +138,7 @@ const Bill = () => {
                     <h1 className="text-blue-800 font-bold text-[30px]">{charge}$</h1>
                 </div>
                 <div className="flex justify-between">
-                    <h1 className="text-gray-500">tax</h1>
+                    <h1 className="text-gray-500">tax</h1>  
                     <h1 className="text-blue-800 font-bold text-[30px]">10$</h1>
                 </div>
                 <div className="flex justify-between">
@@ -93,7 +148,7 @@ const Bill = () => {
             </div>
 
             <div className="relative">
-                <input value={inputValue} type="text" className="bg-white w-full border-1 border-gray-500  rounded-lg h-10 mt-10 pl-3" placeholder="account / card" />    
+                <input value={inputValue} onChange={(e) => inputValue(e.currentTarget.value)} type="text" className="bg-white w-full border-1 border-gray-500  rounded-lg h-10 mt-10 pl-3" placeholder="account / card" />    
                 <button onClick={handleShow} className="w-full h-10 absolute left-0 top-10"><img src={shape} className="absolute right-7 bottom-3 -rotate-90" /></button>
             </div>
 
@@ -105,8 +160,9 @@ const Bill = () => {
             </div>
             ) : null}
 
-            <button  className="text-white left-10 font-medium bg-linear-to-t from-[#6C56F0] to-[#469FEF] w-[80%] h-15 absolute bottom-5 rounded-xl hover:scale-110 transition-all transition-1s">Send</button>
+            <button onClick={handlePayBill} className="text-white left-10 font-medium bg-linear-to-t from-[#6C56F0] to-[#469FEF] w-[80%] h-15 absolute bottom-10 rounded-xl hover:scale-110 transition-all transition-1s">Send</button>
 
+            <Menu />
         </div>
     )
 }

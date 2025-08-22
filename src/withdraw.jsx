@@ -2,6 +2,7 @@ import ilustrasi from './assets/wd-ilustrasi.svg'
 import shpae from './assets/Shape.svg'
 import { useState, useRef, useEffect } from 'react'
 import Logo from './assets/Logo.png'
+import Menu from './Menu.jsx'
 
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -180,6 +181,8 @@ const Withdraw = () => {
             ) : (
                 <div/>
             )}
+
+            <Menu />
         </div>
     )
 }

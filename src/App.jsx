@@ -27,6 +27,8 @@ import MobileRecharge from './mobileRecharge.jsx';
 import SuccesMr from './sccMr.jsx';
 import PayBill from './payBill.jsx';
 import Bill from './bill.jsx';
+import Message from './message.jsx';
+import StockData from './stock.jsx';
 
 const MiniCard = ({image, title}) => {
   return (
@@ -96,6 +98,8 @@ const App = () => {
         <Route path='/sccmr' element={<SuccesMr />} />
         <Route path='/payBill' element={<PayBill />} />
         <Route path='/bill' element={<Bill />} />
+        <Route path='/message' element={<Message />} />
+        <Route path='/stock' element={<StockData />} />
         {/* Add more routes as needed */}
       </Routes>
     </BrowserRouter>
