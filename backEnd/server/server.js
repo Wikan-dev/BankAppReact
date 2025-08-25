@@ -90,6 +90,27 @@ app.get("/stock", (req, res) => {
 // Path JSON relatif ke server.js
 const FILE_PATH = path.join(__dirname, "historyData.json");
 
+app.get("/stock", (req, res) => {
+  res.json({
+    "Time Series (5min)": {
+      "2025-08-25 10:00:00": {
+        "1. open": "100",
+        "2. high": "105",
+        "3. low": "99",
+        "4. close": "103",
+        "5. volume": "1200"
+      },
+      "2025-08-25 10:05:00": {
+        "1. open": "103",
+        "2. high": "106",
+        "3. low": "101",
+        "4. close": "104",
+        "5. volume": "900"
+      }
+    }
+  });
+});
+
 // Clear history
 app.delete("/clear-history", (req, res) => {
   try {

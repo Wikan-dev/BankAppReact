@@ -29,6 +29,9 @@ import PayBill from './payBill.jsx';
 import Bill from './bill.jsx';
 import Message from './message.jsx';
 import StockData from './stock.jsx';
+import Login from './login/login.jsx';
+import Signup from './login/sign-up.jsx';
+import LandingPage from './login/landingPage.jsx';
 
 const MiniCard = ({image, title}) => {
   return (
@@ -54,12 +57,12 @@ const Home = ({date}) => {
   return (
     <div className='px-2 pt-10 bg-[#FFFDFF]'>
         <h1 className='font-bold text-[35px] ml-5'>GOOD {date}, {currentUser.nama}</h1>
-      <div className='flex justify-center relative'>
-          <div key={currentUser.uniqueKey} className='text-white'>
-            <h1 className='absolute top-12 left-12 text-[30px]'>{currentUser.nama}</h1>
-            <h1 className='absolute top-45 left-12 text-[20px] font-bold'>{currentUser.saldo}</h1>
-            <h1 className='absolute top-38 left-12'>{currentUser.nomer}</h1>
-            <h1 className='absolute top-30 left-12'>{currentUser.tipe}</h1>
+      <div className='flex justify-center relative w-100 mx-auto right-5'>
+          <div key={currentUser.uniqueKey} className='text-white absolute left-12'>
+            <h1 className='absolute top-12 text-[30px]'>{currentUser.nama}</h1>
+            <h1 className='absolute top-45 text-[20px] font-bold'>{currentUser.saldo}</h1>
+            <h1 className='absolute top-38'>{currentUser.nomer}</h1>
+            <h1 className='absolute top-30'>{currentUser.tipe}</h1>
           </div>
         <img src={Multi} alt="card" />
       </div>
@@ -100,6 +103,9 @@ const App = () => {
         <Route path='/bill' element={<Bill />} />
         <Route path='/message' element={<Message />} />
         <Route path='/stock' element={<StockData />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/sign-up' element={<Signup />} />
+        <Route path='/landingPage' element={<LandingPage />} />
         {/* Add more routes as needed */}
       </Routes>
     </BrowserRouter>
